@@ -22,7 +22,7 @@ class StreamList extends Component {
     }
 }
 const mapStateToProps = createStructuredSelector({
-    campersList: selectStreams()
+    streamList: selectStreams()
   });
 
 const mapDispatchToProps = {

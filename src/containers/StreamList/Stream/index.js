@@ -1,22 +1,41 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { TableCell, StreamRow } from '../styles';
+import { selectStreams } from '../selectors';
+import { createStructuredSelector } from 'reselect';
 
-export default class Stream extends Component {
-    render() {
-        //const { position, camper: { username, img, recent, alltime } } = this.props;
+class Stream extends Component {
+    
+    /*renderStream(streamData) {
         return (
-            <div></div>
-          /*<tr>
-            <td className='text-center'>{position}</td>
-            <td>
-              <a href={`https://freecodecamp.com/${username}`} target='_blank'>
-                <img className='img' src={img}/>
-                <span>{username}</span>
-              </a>
-            </td>
-            <td className='text-center'>{recent}</td>
-            <td className='text-center'>{alltime}</td>
-          </tr>*/
+            <div>
+                <div>
+                    {streamData[0].data.name}
+                </div>
+            </div>
+        )
+    }*/
+
+    render() {
+        return (
+            <div>
+            {/*this.props.Streams.map(this.renderStream)*/}
+            </div>
+            /*<StreamRow>
+                <TableCell>
+                </TableCell>
+                <TableCell>
+                </TableCell>
+                <TableCell>
+                </TableCell>
+            </StreamRow>*/
         )
       }
 
 }
+
+const mapStateToProps = createStructuredSelector({
+    streamList: selectStreams()
+  });
+
+export default connect(mapStateToProps)(Stream);
