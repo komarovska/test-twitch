@@ -6,14 +6,14 @@ import { createStructuredSelector } from 'reselect';
 
 export default class Stream extends Component {
     render() {
-        const { position, stream: { name, logo, all, online, offline } } = this.props;
+        const { position, stream: { display_name, logo, all, online, offline } } = this.props;
         return (
           <StreamRow>
             <TableCell className='text-center'>{position}</TableCell>
             <TableCell >
-              <a href={`https://www.twitch.tv/${name}`} target='_blank'>
+              <a href={`https://www.twitch.tv/${display_name}`} target='_blank'>
                 <img className='img' src={logo} alt='oops!'/>
-                <span>{name}</span>
+                <span>{display_name}</span>
               </a>
             </TableCell>
             <TableCell className='text-center'>{all}</TableCell>
