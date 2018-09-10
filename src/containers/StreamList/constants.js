@@ -1,8 +1,9 @@
 // links
 export const CHANNELS = 'https://wind-bow.glitch.me/twitch-api/channels/';
 export const STREAMS = 'https://wind-bow.glitch.me/twitch-api/streams/';
-export const FETCH_STREAMS = 'FETCH_STREAMS';
-export const FETCH_CHANNELS = 'FETCH_CHANNELS';
+export const FETCH_ALL = 'FETCH_ALL';
+export const FETCH_ONLINE = 'FETCH_ONLINE';
+export const FETCH_OFFLINE = 'FETCH_OFFLINE';
 
 // colors
 export const lightBrown = 'rgb(127, 109, 121)';

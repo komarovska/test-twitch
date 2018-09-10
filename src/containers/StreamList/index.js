@@ -29,5 +29,5 @@ const mapDispatchToProps = {
     onFetchAllStreamers: fetchAllStreamers
 };
   
-  export default connect(mapStateToProps, mapDispatchToProps)(StreamList);
+export default connect(mapStateToProps, mapDispatchToProps)(StreamList);
 

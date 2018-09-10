@@ -5,7 +5,14 @@ import { selectStreams } from '../selectors';
 import { createStructuredSelector } from 'reselect';
 
 class Stream extends Component {
-    
+
+    render () {
+
+            return (
+              <div> </div>
+            );
+
+    }
     /*renderStream(streamData) {
         return (
             <div>
@@ -14,13 +21,13 @@ class Stream extends Component {
                 </div>
             </div>
         )
-    }*/
+    }
 
     render() {
         return (
             <div>
-            {/*this.props.Streams.map(this.renderStream)*/}
-            </div>
+            {this.props.Streams.map(this.renderStream)}
+            </div>*/
             /*<StreamRow>
                 <TableCell>
                 </TableCell>
@@ -29,8 +36,6 @@ class Stream extends Component {
                 <TableCell>
                 </TableCell>
             </StreamRow>*/
-        )
-      }
 
 }
 
