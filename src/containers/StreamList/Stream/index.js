@@ -11,7 +11,7 @@ export default class Stream extends Component {
           <StreamRow>
             <TableCell className='text-center'>{position}</TableCell>
             <TableCell >
-              <a href={`https://freecodecamp.com/${name}`} target='_blank'>
+              <a href={`https://www.twitch.tv/${name}`} target='_blank'>
                 <img className='img' src={logo} alt='oops!'/>
                 <span>{name}</span>
               </a>
