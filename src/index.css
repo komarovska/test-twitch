@@ -9,8 +9,16 @@ body {
 
 .animate-indicator {
   position: relative;
+  color: rgb(127, 109, 121);
+  background: rgb(255, 247, 252);
   left: 105px;
   transition: left 1s;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: right;
+  margin-bottom: 5px;
+  width: 80px;
+  padding-right: 10px;
 }
 
 .animate-indicator:hover {
@@ -26,4 +34,8 @@ body {
   font-style: italic;
   text-align: left;
   padding-top: 5px;
+}
+
+.sorted {
+  left: 55px;
 }

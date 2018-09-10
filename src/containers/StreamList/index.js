@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { selectStreams, selectSortingType } from './selectors';
-import { fetchAllStreamers } from './actions';
+import { fetchAllStreamers, fetchOnline, fetchOffline } from './actions';
 
 import Stream from './Stream';
 import TableHeader from './TableHeader';
@@ -26,7 +26,9 @@ const mapStateToProps = createStructuredSelector({
   });
 
 const mapDispatchToProps = {
-    onFetchAllStreamers: fetchAllStreamers
+    onFetchAllStreamers: fetchAllStreamers,
+    onFetchOnline: fetchOnline,
+    onFetchOffline: fetchOffline
 };
   
 export default connect(mapStateToProps, mapDispatchToProps)(StreamList);

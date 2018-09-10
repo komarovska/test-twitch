@@ -4,7 +4,7 @@ import { FETCH_OFFLINE } from './constants';
 
 const initialState = {
     Streams: [],
-    sortingType: 'online'
+    sortingType: 'all'
 };
 
 const StreamsReducer = (state = initialState, action) => {
@@ -24,6 +24,5 @@ const StreamsReducer = (state = initialState, action) => {
     }
 
 }
-
 
 export default StreamsReducer;
