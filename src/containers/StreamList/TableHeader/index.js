@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { selectStreams, selectSortingType } from '../selectors';
 import { fetchAllStreamers, fetchOnline, fetchOffline } from '../actions';
@@ -8,7 +7,6 @@ import { fetchAllStreamers, fetchOnline, fetchOffline } from '../actions';
 import {
     List,
     Title, 
-    Indicator,
     Circle,
   } from '../styles.js';
   import { 
@@ -42,7 +40,6 @@ import {
     render() {
       const { streamsSortingType } = this.props;
       return (
-      
         <List className='row'>
             <Title className='text-center col-xs-9'>TWITCH STREAMERS</Title>
             <Title className='col-xs-3'>
@@ -58,7 +55,7 @@ import {
                 <Circle style={{ backgroundColor: lightBlue }}></Circle>
                 offline
               </div>
-              </Title> 
+            </Title> 
         </List>
         );
       }

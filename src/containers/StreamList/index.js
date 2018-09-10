@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { createStructuredSelector } from 'reselect';
 import { selectStreams, selectSortingType } from './selectors';
 import { fetchAllStreamers, fetchOnline, fetchOffline } from './actions';
@@ -12,11 +11,21 @@ class StreamList extends Component {
     componentDidMount = () => {
         this.props.onFetchAllStreamers();
       }
+    
     render() {
+        const { streamList } = this.props;
+        const streams = streamList.map((stream, index) => {
+            return (
+                <Stream stream={stream} key={stream.name} position={++index} />
+            );
+        });
+    
         return (
           <div>
             <TableHeader />
-            <Stream />
+            <div>
+            {streams}
+            </div>
           </div>
         );
     }

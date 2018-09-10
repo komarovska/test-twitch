@@ -61,3 +61,4 @@ import {
   export const TableCell = styled.div`
     font-family: 'Lora', serif;
     `
+  

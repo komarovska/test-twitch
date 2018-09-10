@@ -4,43 +4,23 @@ import { TableCell, StreamRow } from '../styles';
 import { selectStreams } from '../selectors';
 import { createStructuredSelector } from 'reselect';
 
-class Stream extends Component {
-
-    render () {
-
-            return (
-              <div> </div>
-            );
-
-    }
-    /*renderStream(streamData) {
-        return (
-            <div>
-                <div>
-                    {streamData[0].data.name}
-                </div>
-            </div>
-        )
-    }
-
+export default class Stream extends Component {
     render() {
+        const { position, stream: { name, logo, all, online, offline } } = this.props;
         return (
-            <div>
-            {this.props.Streams.map(this.renderStream)}
-            </div>*/
-            /*<StreamRow>
-                <TableCell>
-                </TableCell>
-                <TableCell>
-                </TableCell>
-                <TableCell>
-                </TableCell>
-            </StreamRow>*/
-
+          <StreamRow>
+            <TableCell className='text-center'>{position}</TableCell>
+            <TableCell >
+              <a href={`https://freecodecamp.com/${name}`} target='_blank'>
+                <img className='img' src={logo} alt='oops!'/>
+                <span>{name}</span>
+              </a>
+            </TableCell>
+            <TableCell className='text-center'>{all}</TableCell>
+            <TableCell className='text-center'>{online}</TableCell>
+            <TableCell className='text-center'>{offline}</TableCell>
+          </StreamRow>
+        );
+    }
 }
 
-const mapStateToProps = createStructuredSelector({
-    streamList: selectStreams()
-  });
-
-export default connect(mapStateToProps)(Stream);
