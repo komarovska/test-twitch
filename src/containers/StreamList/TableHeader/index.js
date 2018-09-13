@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectStreams, selectSortingType } from '../selectors';
-import { fetchAllStreamers, fetchOnline, fetchOffline } from '../actions';
+import { fetchAllStreamers } from '../actions';
 
 import {
     List,
@@ -18,7 +18,6 @@ import {
   class TableHeader extends Component {
   
     sortStreamers = (filter) => {
-      if (filter !== this.props.streamersSortingType) {
         if (filter === 'online') {
           this.props.onFetchOnline();
         } else if (filter === 'offline') {
@@ -26,7 +25,6 @@ import {
         } else {
           this.props.onFetchAllStreamers();
         }
-      }
     }
   
     handleSort = (fieldName) => type => {
@@ -38,20 +36,19 @@ import {
       } 
     }
     render() {
-      const { streamsSortingType } = this.props;
       return (
         <List className='row'>
             <Title className='text-center col-xs-9'>TWITCH STREAMERS</Title>
             <Title className='col-xs-3'>
-              <div className='animate-indicator sorted' onClick={this.handleSort('all')}>
-                <Circle style={{ backgroundColor: lightBrown }}></Circle>
+              <div className='animate-indicator clickable'>
+                <Circle style={{ backgroundColor: lightBrown }} onClick={this.handleSort('all')}></Circle>
                 all
               </div>
-              <div className='animate-indicator clickable' onClick={this.handleSort('online')}>
-                <Circle style={{ backgroundColor: lightGreen }}></Circle>
+              <div className='animate-indicator clickable'>
+                <Circle style={{ backgroundColor: lightGreen }} onClick={this.handleSort('all')}></Circle>
                 online
               </div>
-              <div className='animate-indicator clickable' onClick={this.handleSort('offline')}>
+              <div className='animate-indicator clickable'>
                 <Circle style={{ backgroundColor: lightBlue }}></Circle>
                 offline
               </div>
@@ -68,8 +65,6 @@ const mapStateToProps = createStructuredSelector({
   
 const mapDispatchToProps = {
       onFetchAllStreamers: fetchAllStreamers,
-      onFetchOnline: fetchOnline,
-      onFetchOffline: fetchOffline
   };
     
   export default connect(mapStateToProps, mapDispatchToProps)(TableHeader);

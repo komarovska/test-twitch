@@ -1,6 +1,4 @@
 import { FETCH_ALL } from './constants';
-import { FETCH_ONLINE } from './constants';
-import { FETCH_OFFLINE } from './constants';
 
 const initialState = {
     Streams: [],
@@ -9,17 +7,13 @@ const initialState = {
 
 const StreamsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FETCH_ALL:
-          return { ...state, Streams: action.payload, sortingType: 'all' };
+      case FETCH_ALL:
+        console.log(action.payload);
+        return { ...state, Streams: action.payload, sortingType: 'all' };
 
-        case FETCH_ONLINE:
-          return { ...state, Streams: action.payload, sortingType: 'online' };
-
-        case FETCH_OFFLINE:
-          return { ...state, Streams: action.payload, sortingType: 'offline' };
-
-        default:
-           return state;
+      default:
+        console.log(state);
+        return state;
     
     }
 
