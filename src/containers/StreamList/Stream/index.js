@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { TableCell, StreamRow } from '../styles';
-import { selectStreams } from '../selectors';
-import { createStructuredSelector } from 'reselect';
+
+import { TableCell, Logo } from '../styles';
+
 
 export default class Stream extends Component {
     render() {
-        const { position, stream: { display_name, logo, all, online, offline } } = this.props;
+        const { stream: { game, name, userpic, status } } = this.props;
         return (
-          <StreamRow>
-            <TableCell className='text-center'>{position}</TableCell>
-            <TableCell >
-              <a href={`https://www.twitch.tv/${display_name}`} target='_blank'>
-                <img className='img' src={logo} alt='oops!'/>
-                <span>{display_name}</span>
-              </a>
-            </TableCell>
-            <TableCell className='text-center'>{all}</TableCell>
-            <TableCell className='text-center'>{online}</TableCell>
-            <TableCell className='text-center'>{offline}</TableCell>
-          </StreamRow>
+          <div>
+
+              {status === 'offline' ?  
+              (<div className='OfflineStream row'>
+              <Logo className='col-xs-2' src={userpic}/>
+              <TableCell className='col-xs-3'><a href={`https://www.twitch.tv/${name}`}>{name}</a></TableCell>
+              <TableCell className='stream-name col-xs-7'>Offline</TableCell>
+              </div>) : 
+              (<div className='OnlineStream row'>
+              <Logo className='col-xs-2' src={userpic}/>
+              <TableCell className='col-xs-3'><a href={`https://www.twitch.tv/${name}`}>{name}</a></TableCell>
+              <TableCell className='stream-name col-xs-7'>{game}:{status}</TableCell>
+              </div>)
+              }
+         
+          </div>
         );
     }
 }
