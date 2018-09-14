@@ -5,6 +5,7 @@
 
 body {
   background: rgb(235, 244, 225);
+  margin-bottom: 50px;
 }
 
 .animate-indicator {
@@ -38,4 +39,31 @@ body {
 
 .sorted {
   left: 55px;
+}
+
+  
+.OnlineStream {
+padding: 10px;
+background: rgb(157, 209, 156);
+border: 1px solid rgb(255, 247, 252);
+display: block;
+}
+
+.OfflineStream {
+padding: 10px;
+background: rgb(166, 200, 221);
+border: 1px solid rgb(255, 247, 252);
+display: block;
+}
+
+.circle-brown {
+  background: rgb(127, 109, 121);
+}
+
+.circle-blue {
+  background: rgb(166, 200, 221);
+}
+
+.circle-green {
+  background: rgb(185, 224, 170);
 }

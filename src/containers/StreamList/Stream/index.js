@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
 
-import { TableCell, StreamRow } from '../styles';
+import { TableCell, Logo } from '../styles';
 
 
 export default class Stream extends Component {
     render() {
-        const { position, stream: { id, name, status, userpic } } = this.props;
+        const { stream: { game, name, userpic, status } } = this.props;
         return (
-          <StreamRow>
-            <TableCell className='text-center'>{position}</TableCell>
-            <TableCell >
-              <a href={`https://www.twitch.tv/${name}`} target='_blank'>
-                <img className='img' src={userpic} alt='oops!'/>
-                <span>{name}</span>
-              </a>
-            </TableCell>
-              <span>{id}</span>
-              <span>{status}</span>
-          </StreamRow>
+          <div>
+
+              {status === 'offline' ?  
+              (<div className='OfflineStream row'>
+              <Logo className='col-xs-2' src={userpic}/>
+              <TableCell className='col-xs-3'><a href={`https://www.twitch.tv/${name}`}>{name}</a></TableCell>
+              <TableCell className='stream-name col-xs-7'>Offline</TableCell>
+              </div>) : 
+              (<div className='OnlineStream row'>
+              <Logo className='col-xs-2' src={userpic}/>
+              <TableCell className='col-xs-3'><a href={`https://www.twitch.tv/${name}`}>{name}</a></TableCell>
+              <TableCell className='stream-name col-xs-7'>{game}:{status}</TableCell>
+              </div>)
+              }
+         
+          </div>
         );
     }
 }

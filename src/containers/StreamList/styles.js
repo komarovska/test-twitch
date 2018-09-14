@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import {
     lightBrown,
     lightGrey,
-    //darkBlue,
-    normalGreen,
   } from './constants';
   
   export const List = styled.div`
@@ -37,7 +35,6 @@ import {
   export const Circle = styled.div`
     width: 12px;
     height: 12px;
-    background: brown;
     border-radius: 50%;
     border: 1px solid ${lightBrown}; 
     display: inline-block;
@@ -45,20 +42,19 @@ import {
     margin: 3px;
   `
   
-  export const StreamRow = styled.div`
-    padding: 10px;
-    background: ${normalGreen};
-    border: 1px solid ${lightGrey};
-  `
-  
   export const Logo = styled.img`
     width: 50px;
     height: 50px;
     border-radius: 50%;
     border: 2px solid ${lightBrown};
+    padding: 0;
+    
   `
   
   export const TableCell = styled.div`
     font-family: 'Lora', serif;
+    display: inline-block;
+    padding: 20px;
+    text-align: center;
     `
   

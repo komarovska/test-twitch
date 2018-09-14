@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectStreams, selectSortingType } from './selectors';
+import { selectStreams } from './selectors';
 import { fetchAllStreamers } from './actions';
 
 import Stream from './Stream';
