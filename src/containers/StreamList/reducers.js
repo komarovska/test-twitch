@@ -15,7 +15,7 @@ const StreamsReducer = (state = initialState, action) => {
             id: channelData.name,
             name: channelData.display_name,
             game: channelData.game,
-            status: streamData.stream ? streamData.stream.game : 'offline',
+            status: streamData.stream ? channelData.status : 'offline',
             userpic: channelData.logo,
           };
       });
