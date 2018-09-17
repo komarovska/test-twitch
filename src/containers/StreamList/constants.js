@@ -11,14 +11,14 @@ export const lightBlue = 'rgb(166, 200, 221)';
 export const darkBlue = 'rgb(84, 116, 168)';
 export const normalGreen = 'rgb(185, 224, 170)';
 
-//streamers 
+// streamers
 export const names = [
-    "ESL_SC2", 
-    "OgamingSC2", 
-    "cretetion", 
-    "freecodecamp", 
-    "storbeck", 
-    "habathcx", 
-    "RobotCaleb",
-    "noobs2ninjas"
-]
+  'ESL_SC2',
+  'OgamingSC2',
+  'cretetion',
+  'freecodecamp',
+  'storbeck',
+  'habathcx',
+  'RobotCaleb',
+  'noobs2ninjas',
+];

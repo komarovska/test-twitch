@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectSortingType } from '../selectors';
+import { selectSortingType, selectStreams } from '../selectors';
 import { fetchAllStreamers } from '../actions';
 
 import {
@@ -29,13 +29,14 @@ import {
     }
 
     sortStreamers = (filter) => {
+      const { streamList } = this.props;
       let offlines = document.getElementsByClassName('OfflineStream row');
       let onlines = document.getElementsByClassName('OnlineStream row');
       if (filter === 'online') {
         this.makeInvisible(offlines);
         this.makeVisible(onlines);
       } else if (filter === 'offline') {
-        this.makeInvisible(onlines);
+        this.makeInvisible(onlines); 
         this.makeVisible(offlines);
       } else {
         this.makeVisible(onlines);
@@ -77,7 +78,8 @@ import {
     
   
 const mapStateToProps = createStructuredSelector({
-      streamsSortingType: selectSortingType()
+      streamsSortingType: selectSortingType(),
+      streamList: selectStreams()
 });
   
 const mapDispatchToProps = {
