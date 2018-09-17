@@ -8,7 +8,6 @@ export default class Stream extends Component {
         const { stream: { game, name, userpic, status } } = this.props;
         return (
           <div>
-
               {status === 'offline' ?  
               (<div className='OfflineStream row'>
               <Logo className='col-xs-2' src={userpic}/>
