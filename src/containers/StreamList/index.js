@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectStreams, receivedProps } from './selectors';
+import { selectStreams, receivedProps, recjectedProps } from './selectors';
 import { fetchAllStreamers } from './actions';
 
 import Stream from './Stream';
@@ -10,7 +10,7 @@ import TableHeader from './TableHeader';
 class StreamList extends Component {
     
     render() {
-        const { streamList, isFetched } = this.props;
+        const { streamList, isFetched, isError } = this.props;
         const streams = streamList.map((stream, index) => {
             return (
                 <Stream stream={stream} key={stream.name} position={++index} />
@@ -24,8 +24,8 @@ class StreamList extends Component {
             {streams}
             </div>
             <div>
-                {isFetched === false ? 
-                (<div className="loader"></div>) :
+                {(isFetched === false) ? (<div className="loader"></div>) :
+                (isError) ? (<div className="error-message">{isError}</div>) :
                 (<span></span>)
                 }
             </div>
@@ -35,7 +35,8 @@ class StreamList extends Component {
 }
 const mapStateToProps = createStructuredSelector({
     streamList: selectStreams(),
-    isFetched: receivedProps()
+    isFetched: receivedProps(),
+    isError: recjectedProps()
   });
 
 const mapDispatchToProps = {

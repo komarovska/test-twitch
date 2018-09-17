@@ -3,7 +3,8 @@ import { FETCH_ALL } from './constants';
 const initialState = {
     Streams: [],
     sortingType: 'all',
-    isReceived: false
+    isReceived: false,
+    isRejected: false,
 };
 
 const StreamsReducer = (state = initialState, action) => {
@@ -20,11 +21,13 @@ const StreamsReducer = (state = initialState, action) => {
             userpic: channelData.logo,
           };
       });
-        return { ...state, Streams: streams, sortingType: 'all', isReceived: true };
+        return { ...state, Streams: streams, sortingType: 'all', isReceived: true};
       case `${FETCH_ALL}_PENDING`:
-        return { ...state, isReceived: false };
+        return state;
       case `${FETCH_ALL}_REJECTED`:
-        return { ...state, isReceived: false };
+        console.log(action.payload);
+        const errorMessage = 'Attention! '+action.payload;
+        return { ...state, isRejected: errorMessage, isReceived: true };
       default:
         return state;
     }
