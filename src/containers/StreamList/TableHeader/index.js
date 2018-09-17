@@ -29,7 +29,7 @@ import {
     }
 
     sortStreamers = (filter) => {
-      const { streamList } = this.props;
+      //const { streamList } = this.props;
       let offlines = document.getElementsByClassName('OfflineStream row');
       let onlines = document.getElementsByClassName('OnlineStream row');
       if (filter === 'online') {
