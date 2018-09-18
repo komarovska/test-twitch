@@ -4,7 +4,6 @@ import { createStructuredSelector } from 'reselect';
 import { selectStreams, selectOnlineStreams, selectOfflineStreams, receivedProps } from '../selectors';
 import { fetchAllStreamers } from '../actions';
 
-import Stream from '../Stream';
 
 import {
     List,
@@ -16,28 +15,25 @@ import {
     
     componentDidMount() {
       this.props.onFetchAllStreamers();
-      
+      console.log(this.sortStreamers('online'));
     }
 
     componentDidUpdate(prevProps) {
       if (this.props.streamList !== prevProps.streamList) {
-        this.sortStreamers('all');
-        console.log(this.TEST);
+        console.log(this.sortStreamers('online'));
       }
     }
 
     sortStreamers = (filter) => {
-      const { offlineStreamList, onlineStreamList, streamList } = this.props;
       let TEST;
       if (filter === 'online') {
-        TEST = onlineStreamList;
+        TEST = this.props.onlineStreamList;
       } else if (filter === 'offline') {
-        TEST = offlineStreamList;
+        TEST = this.props.offlineStreamList;
       } else {
-        TEST = streamList;
+        TEST = this.props.streamList;
       }
-      console.log(TEST);
-      return TEST; 
+      return TEST;
     }
 
     handleSort = (fieldName) => type => {
@@ -50,13 +46,8 @@ import {
     };
     
     render() {
-      /*const { isFetched, isError } = this.props;
-      const streams = this.TEST.map((stream) => (
-        <Stream stream={stream} key={stream.name} />
-      ));*/
       return (
-        <div>
-        <List className='row'> 
+        <List className='row'>
             <Title className='text-center col-xs-9'>TWITCH STREAMERS</Title>
             <Title className='col-xs-3'>
               <div className='animate-indicator sorted' onClick={this.handleSort('all')}>
@@ -73,10 +64,10 @@ import {
               </div>
             </Title> 
         </List>
-        </div>
         );
       }
     }
+    
     
   
 const mapStateToProps = createStructuredSelector({

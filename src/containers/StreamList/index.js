@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectStreams, selectOfflineStreams, selectOnlineStreams, receivedProps, recjectedProps } from './selectors';
+import { receivedProps, recjectedProps } from './selectors';
 import { fetchAllStreamers } from './actions';
 
 import TableHeader from './TableHeader';
+import Stream from './Stream';
 
 class StreamList extends Component {
 
   render() {
     const { isFetched, isError } = this.props;
-
-
     return (
       <div>
         <TableHeader />
@@ -26,9 +25,6 @@ class StreamList extends Component {
   }
 }
   const mapStateToProps = createStructuredSelector({
-    streamList: selectStreams(),
-    onlineStreamList: selectOnlineStreams(),
-    offlineStreamList: selectOfflineStreams(),
     isFetched: receivedProps(),
     isError: recjectedProps(),
   });
