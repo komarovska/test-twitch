@@ -2,7 +2,6 @@ import { FETCH_ALL } from './constants';
 
 const initialState = {
   Streams: [],
-  sortingType: 'all',
   isReceived: false,
   isRejected: false,
 };
@@ -22,7 +21,7 @@ const StreamsReducer = (state = initialState, action) => {
         };
       });
       return {
-        ...state, Streams: streams, sortingType: 'all', isReceived: true,
+        ...state, Streams: streams, isReceived: true,
       };
     case `${FETCH_ALL}_PENDING`:
       return state;

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { selectSortingType, selectStreams } from '../selectors';
+import { selectStreams, selectOnlineStreams, selectOfflineStreams, receivedProps } from '../selectors';
 import { fetchAllStreamers } from '../actions';
+
+import Stream from '../Stream';
 
 import {
     List,
@@ -14,36 +16,30 @@ import {
     
     componentDidMount() {
       this.props.onFetchAllStreamers();
+      
     }
 
-    makeInvisible = (arr) => {
-      Array.from(arr).forEach(function(item) {
-        item.style.display = 'none';
-     });
-    }
-
-    makeVisible = (arr) => {
-      Array.from(arr).forEach(function(item) {
-        item.style.display = 'block';
-     });
+    componentDidUpdate(prevProps) {
+      if (this.props.streamList !== prevProps.streamList) {
+        this.sortStreamers('all');
+        console.log(this.TEST);
+      }
     }
 
     sortStreamers = (filter) => {
-      //const { streamList } = this.props;
-      let offlines = document.getElementsByClassName('OfflineStream row');
-      let onlines = document.getElementsByClassName('OnlineStream row');
+      const { offlineStreamList, onlineStreamList, streamList } = this.props;
+      let TEST;
       if (filter === 'online') {
-        this.makeInvisible(offlines);
-        this.makeVisible(onlines);
+        TEST = onlineStreamList;
       } else if (filter === 'offline') {
-        this.makeInvisible(onlines); 
-        this.makeVisible(offlines);
+        TEST = offlineStreamList;
       } else {
-        this.makeVisible(onlines);
-        this.makeVisible(offlines);
+        TEST = streamList;
       }
+      console.log(TEST);
+      return TEST; 
     }
-  
+
     handleSort = (fieldName) => type => {
       if (!type.target.classList.contains('sorted')) {
         let element = document.getElementsByClassName('sorted').item(0);
@@ -54,8 +50,13 @@ import {
     };
     
     render() {
+      /*const { isFetched, isError } = this.props;
+      const streams = this.TEST.map((stream) => (
+        <Stream stream={stream} key={stream.name} />
+      ));*/
       return (
-        <List className='row'>
+        <div>
+        <List className='row'> 
             <Title className='text-center col-xs-9'>TWITCH STREAMERS</Title>
             <Title className='col-xs-3'>
               <div className='animate-indicator sorted' onClick={this.handleSort('all')}>
@@ -72,14 +73,17 @@ import {
               </div>
             </Title> 
         </List>
+        </div>
         );
       }
     }
     
   
 const mapStateToProps = createStructuredSelector({
-      streamsSortingType: selectSortingType(),
-      streamList: selectStreams()
+      streamList: selectStreams(),
+      onlineStreamList: selectOnlineStreams(),
+      offlineStreamList: selectOfflineStreams(),
+      isFetched: receivedProps(),
 });
   
 const mapDispatchToProps = {
