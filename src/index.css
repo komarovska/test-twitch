@@ -8,18 +8,25 @@ body {
   margin-bottom: 50px;
 }
 
+.button-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .animate-indicator {
   position: relative;
-  color: rgb(127, 109, 121);
-  background: rgb(255, 247, 252);
   left: 105px;
   transition: left 1s;
   font-size: 14px;
+  line-height: 14px;
+  color: rgb(127, 109, 121);
+  background: rgb(255, 247, 252);
   font-weight: 400;
   text-align: right;
   margin-bottom: 5px;
   width: 80px;
   padding-right: 10px;
+  box-shadow: 0;
 }
 
 .animate-indicator:hover {
@@ -54,7 +61,7 @@ padding: 10px;
 background: rgb(166, 200, 221);
 border: 1px solid rgb(255, 247, 252);
 display: block;
-}
+}    
 
 .circle-brown {
   background: rgb(127, 109, 121);

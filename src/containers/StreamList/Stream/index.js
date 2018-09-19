@@ -1,27 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import { TableCell, Logo } from '../styles';
 
 
-export default class Stream extends Component {
-  render() {
-    const {
-      stream: { game, name, userpic, status } } = this.props;
-    return (
-      <div>
-        <div className="OnlineStream row">
-          <Logo className="col-xs-2" src={userpic} />
-          <TableCell className="col-xs-3"><a href={`https://www.twitch.tv/${name}`}>{name}</a></TableCell>
-          <TableCell className="stream-name col-xs-7">
-            {game}
-            {' '}
-:
-            {' '}
-            {' '}
-            {status}
-          </TableCell>
-        </div>
-      </div>
-    );
-  }
-}
+const Stream = ({ name, status, userpic, game }) => (
+  <div>
+    <div className="OnlineStream row">
+      <Logo className="col-xs-2" src={userpic} />
+      <TableCell className="col-xs-3"><a href={`https://www.twitch.tv/${name}`}>{name}</a></TableCell>
+      <TableCell className="stream-name col-xs-7">
+        { game }
+        :
+        {' '}
+        {status}
+      </TableCell>
+    </div>
+  </div>
+);
+
+Stream.propTypes = {
+  name: PropTypes.string,
+  status: PropTypes.string,
+  userpic: PropTypes.string,
+  game: PropTypes.string,
+};
+
+export default Stream;

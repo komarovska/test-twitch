@@ -30,7 +30,7 @@ const StreamsReducer = (state = initialState, action) => {
       const errorMessage = `Attention! ${action.payload}`;
       return { ...state, isRejected: errorMessage, isReceived: true };
     case `${SELECT_SORTING_TYPE}`:
-      return { ...state, sortingType: action.sortingType };
+      return { ...state, sortingType: action.sortingType } 
     default:
       return state;
   }

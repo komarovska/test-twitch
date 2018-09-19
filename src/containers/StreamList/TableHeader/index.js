@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { sortStreams, receivedProps } from '../selectors';
+import { sortStreams } from '../selectors';
 import { sortStreamers } from '../actions';
 import { ALL, ONLINE, OFFLINE } from '../constants';
 
@@ -13,10 +14,12 @@ import {
 
 class TableHeader extends Component {
     handleSort = fieldName => type => {
+      const Target = type;
       if (!type.target.classList.contains('sorted')) {
+        // const { propsDestruct } = this.props;
         const element = document.getElementsByClassName('sorted').item(0);
         element.className = 'indicator animate-indicator clickable';
-        type.target.className = 'indicator animate-indicator sorted clickable';
+        Target.target.className = 'indicator animate-indicator sorted clickable';
         this.props.onSortStreamers(fieldName);
       }
     };
@@ -25,19 +28,19 @@ class TableHeader extends Component {
       return (
         <List className="row">
           <Title className="text-center col-xs-9">TWITCH STREAMERS</Title>
-          <Title className="col-xs-3">
-            <div className="animate-indicator sorted" onClick={this.handleSort({ ALL })}>
+          <Title className="col-xs-3 button-container">
+            <button type="button" className="animate-indicator sorted" onClick={this.handleSort({ ALL })}>
               <Circle className="circle-brown" />
                 all
-            </div>
-            <div className="animate-indicator clickable" onClick={this.handleSort({ ONLINE })}>
+            </button>
+            <button type="button" className="animate-indicator clickable" onClick={this.handleSort({ ONLINE })}>
               <Circle className="circle-green" />
                 online
-            </div>
-            <div className="animate-indicator clickable" onClick={this.handleSort({ OFFLINE })}>
+            </button>
+            <button type="button" className="animate-indicator clickable" onClick={this.handleSort({ OFFLINE })}>
               <Circle className="circle-blue" />
                 offline
-            </div>
+            </button>
           </Title>
         </List>
       );
@@ -47,11 +50,14 @@ class TableHeader extends Component {
 
 const mapStateToProps = createStructuredSelector({
   streamList: sortStreams,
-  isFetched: receivedProps(),
 });
 
 const mapDispatchToProps = {
   onSortStreamers: sortStreamers,
+};
+
+TableHeader.propTypes = {
+  onSortStreamers: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableHeader);
