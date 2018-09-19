@@ -1,9 +1,10 @@
-import { FETCH_ALL } from './constants';
+import { FETCH_ALL, SELECT_SORTING_TYPE } from 'constants';
 
 const initialState = {
   Streams: [],
   isReceived: false,
   isRejected: false,
+  sortingType: 'ALL'
 };
 
 const StreamsReducer = (state = initialState, action) => {
@@ -28,6 +29,8 @@ const StreamsReducer = (state = initialState, action) => {
     case `${FETCH_ALL}_REJECTED`:
       const errorMessage = `Attention! ${action.payload}`;
       return { ...state, isRejected: errorMessage, isReceived: true };
+    case `${SELECT_SORTING_TYPE}`:
+      return { ...state, sortingType: action.sortingType}
     default:
       return state;
   }

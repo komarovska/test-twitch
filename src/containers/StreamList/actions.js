@@ -4,7 +4,8 @@ import {
   CHANNELS,
   STREAMS,
   FETCH_ALL,
-} from './constants';
+  SELECT_SORTING_TYPE
+} from 'constants';
 
 
 export const fetchAllStreamers = () => {
@@ -17,3 +18,10 @@ export const fetchAllStreamers = () => {
     payload: Promise.all(data),
   });
 };
+
+export const selectSortingType = sortingType => {
+  return ({
+    type: SELECT_SORTING_TYPE,
+    sortingType
+  })
+}
