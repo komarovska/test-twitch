@@ -5,10 +5,9 @@ import { receivedProps, recjectedProps } from './selectors';
 import { fetchAllStreamers } from './actions';
 
 import TableHeader from './TableHeader';
-import Stream from './Stream';
+// import Stream from './Stream';
 
 class StreamList extends Component {
-
   render() {
     const { isFetched, isError } = this.props;
     return (
@@ -17,20 +16,20 @@ class StreamList extends Component {
         <div>
           {(isFetched === false) ? (<div className="loader" />)
             : (isError) ? (<div className="error-message">{isError}</div>)
-            : (<span />)
+              : (<span />)
           }
         </div>
       </div>
     );
   }
 }
-  const mapStateToProps = createStructuredSelector({
-    isFetched: receivedProps(),
-    isError: recjectedProps(),
-  });
+const mapStateToProps = createStructuredSelector({
+  isFetched: receivedProps(),
+  isError: recjectedProps(),
+});
 
-  const mapDispatchToProps = {
-    onFetchAllStreamers: fetchAllStreamers,
-  };
+const mapDispatchToProps = {
+  onFetchAllStreamers: fetchAllStreamers,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(StreamList);

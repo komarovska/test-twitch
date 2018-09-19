@@ -4,7 +4,7 @@ import {
   CHANNELS,
   STREAMS,
   FETCH_ALL,
-  SELECT_SORTING_TYPE
+  SELECT_SORTING_TYPE,
 } from 'constants';
 
 
@@ -19,9 +19,7 @@ export const fetchAllStreamers = () => {
   });
 };
 
-export const sortStreamers = sortingType => {
-  return ({
-    type: SELECT_SORTING_TYPE,
-    sortingType
-  })
-}
+export const sortStreamers = sortingType => ({
+  type: SELECT_SORTING_TYPE,
+  sortingType,
+});

@@ -4,13 +4,13 @@ const initialState = {
   Streams: [],
   isReceived: false,
   isRejected: false,
-  sortingType: 'ALL'
+  sortingType: 'ALL',
 };
 
 const StreamsReducer = (state = initialState, action) => {
   switch (action.type) {
     case `${FETCH_ALL}_FULFILLED`:
-      const streams = action.payload.map((stream) => {
+      const streams = action.payload.map(stream => {
         const channelData = stream[0].data;
         const streamData = stream[1].data;
         return {
@@ -30,7 +30,7 @@ const StreamsReducer = (state = initialState, action) => {
       const errorMessage = `Attention! ${action.payload}`;
       return { ...state, isRejected: errorMessage, isReceived: true };
     case `${SELECT_SORTING_TYPE}`:
-      return { ...state, sortingType: action.sortingType}
+      return { ...state, sortingType: action.sortingType };
     default:
       return state;
   }
