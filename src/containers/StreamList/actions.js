@@ -19,7 +19,7 @@ export const fetchAllStreamers = () => {
   });
 };
 
-export const selectSortingType = sortingType => {
+export const sortStreamers = sortingType => {
   return ({
     type: SELECT_SORTING_TYPE,
     sortingType

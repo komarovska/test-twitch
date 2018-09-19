@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { sortStreams, receivedProps } from '../selectors';
-import { selectSortingType } from '../actions';
+import { sortStreamers } from '../actions';
 import { ALL, ONLINE, OFFLINE } from '../constants'
 
 import {
@@ -18,7 +18,7 @@ import {
         let element = document.getElementsByClassName('sorted').item(0);
         element.className = 'indicator animate-indicator clickable';
         type.target.className = 'indicator animate-indicator sorted clickable';
-        this.props.onSelectSortingType(fieldName);
+        this.props.onSortStreamers(fieldName);
       } 
     };
     
@@ -53,7 +53,7 @@ const mapStateToProps = createStructuredSelector({
 });
   
 const mapDispatchToProps = {
-      onSelectSortingType: selectSortingType,
+      onSortStreamers: sortStreamers,
   };
     
   export default connect(mapStateToProps, mapDispatchToProps)(TableHeader);
