@@ -11,5 +11,5 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
   </Provider>,
-  this.document.getElementById('root'),
+  document.getElementById('root'),
 );
