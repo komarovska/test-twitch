@@ -13,10 +13,8 @@ const StreamList = ({ isFetched, isError }) => (
   <div>
     <TableHeader />
     <div>
-      {(isFetched === false) ? (<div className="loader" />) : 
-       (isError) ? (<div className="error-message">{isError}</div>) : 
-       (<Stream />)
-          }
+      {(isFetched === false) ? (<div className="loader" />) : (<Stream />)}
+      {(isError) ? (<div className="error-message">{isError}</div>) : (<span />)}
     </div>
   </div>
 
