@@ -21,7 +21,7 @@ class TableHeader extends Component {
     handleSort = fieldName => type => {
       const Target = type;
       if (!type.target.classList.contains('sorted')) {
-        const onSortStreamers = this.props;
+        const { onSortStreamers } = this.props;
         const element = document.getElementsByClassName('sorted').item(0);
         element.className = 'indicator animate-indicator clickable';
         Target.target.className = 'indicator animate-indicator sorted clickable';
@@ -64,6 +64,7 @@ const mapDispatchToProps = {
 
 TableHeader.propTypes = {
   onFetchAllStreamers: PropTypes.func,
+  onSortStreamers: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableHeader);
