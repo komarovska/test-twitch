@@ -5,7 +5,7 @@ import {
   STREAMS,
   FETCH_ALL,
   SELECT_SORTING_TYPE,
-} from 'constants';
+} from './constants';
 
 
 export const fetchAllStreamers = () => {

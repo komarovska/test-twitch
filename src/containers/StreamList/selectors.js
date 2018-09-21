@@ -1,21 +1,22 @@
 import { createSelector } from 'reselect';
-import { ALL, ONLINE, OFFLINE } from 'constants';
+import { ALL, ONLINE, OFFLINE } from './constants';
 
 export const selectStreams = state => state.StreamsReducer.Streams;
 export const selectSortingType = state => state.StreamsReducer.sortingType;
 
 export const sortStreams = createSelector(
-  selectStreams,
-  selectSortingType,
-  (Streams, sortingType) => {
-    if (sortingType === ALL) {
-      return Streams;
-    } if (sortingType === ONLINE) {
-      return Streams.filter(stream => stream.status !== 'offline');
-    } if (sortingType === OFFLINE) {
-      return Streams.filter(stream => stream.status === 'offline');
+  [selectStreams, selectSortingType],
+  (sortingType, Streams) => {
+    switch (sortingType) {
+      case ALL:
+        return Streams;
+      case ONLINE:
+        return Streams.filter(stream => stream.status !== 'offline');
+      case OFFLINE:
+        return Streams.filter(stream => stream.status === 'offline');
+      default:
+        return [];
     }
-    return [];
   },
 );
 
