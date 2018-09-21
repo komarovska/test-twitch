@@ -13,11 +13,6 @@ import {
 } from '../styles';
 
 class TableHeader extends Component {
-  componentDidMount() {
-    const { onFetchAllStreamers } = this.props;
-    onFetchAllStreamers();
-  }
-
     handleSort = fieldName => type => {
       const Target = type;
       if (!type.target.classList.contains('sorted')) {
@@ -63,7 +58,6 @@ const mapDispatchToProps = {
 };
 
 TableHeader.propTypes = {
-  onFetchAllStreamers: PropTypes.func,
   onSortStreamers: PropTypes.func,
 };
 
