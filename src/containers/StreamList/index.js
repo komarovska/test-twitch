@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { receivedProps, recjectedProps, selectStreams } from './selectors';
+import { receivedProps, recjectedProps, sortStreams } from './selectors';
 import { fetchAllStreamers } from './actions';
 
 import TableHeader from './TableHeader';
@@ -35,7 +35,7 @@ class StreamList extends Component {
 const mapStateToProps = createStructuredSelector({
   isFetched: receivedProps(),
   isError: recjectedProps(),
-  streamList: selectStreams(),
+  streamList: sortStreams(),
 });
 
 const mapDispatchToProps = {
