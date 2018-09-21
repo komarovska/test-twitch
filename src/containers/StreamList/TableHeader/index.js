@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { sortStreams } from '../selectors';
@@ -13,7 +14,7 @@ import {
 
 class TableHeader extends Component {
   componentDidMount() {
-    const onFetchAllStreamers = this.props;
+    const { onFetchAllStreamers } = this.props;
     onFetchAllStreamers();
   }
 
@@ -59,6 +60,10 @@ const mapStateToProps = createStructuredSelector({
 const mapDispatchToProps = {
   onSortStreamers: sortStreamers,
   onFetchAllStreamers: fetchAllStreamers,
+};
+
+TableHeader.propTypes = {
+  onFetchAllStreamers: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TableHeader);

@@ -11,14 +11,13 @@ import Stream from './Stream';
 
 class StreamList extends Component {
   componentDidMount() {
-    const onFetchAllStreamers = this.props;
+    const { onFetchAllStreamers } = this.props;
     onFetchAllStreamers();
   }
-
   render() {
     const { streamList, isFetched, isError } = this.props;
     streamList.map(stream => (
-      <Stream stream={stream} key={stream.name} />
+    <Stream stream={stream} key={stream.name} />
     ));
     return (
       <div>
@@ -33,9 +32,9 @@ class StreamList extends Component {
 }
 
 const mapStateToProps = createStructuredSelector({
-  isFetched: receivedProps(),
-  isError: recjectedProps(),
-  streamList: sortStreams(),
+  isFetched: receivedProps,
+  isError: recjectedProps,
+  streamList: sortStreams,
 });
 
 const mapDispatchToProps = {
@@ -46,6 +45,7 @@ StreamList.propTypes = {
   isFetched: PropTypes.bool,
   isError: PropTypes.bool,
   streamList: PropTypes.object,
+  onFetchAllStreamers: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(StreamList);
