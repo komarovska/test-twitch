@@ -18,9 +18,10 @@ const StreamsReducer = (state = initialState, action) => {
         return {
           id: channelData.name,
           name: channelData.display_name,
-          game: channelData.game,
-          status: streamData.stream ? streamData.stream.game : 'offline',
+          game: streamData.stream ? `${channelData.game} : ` : '',
+          status: streamData.stream ? channelData.status : 'offline',
           userpic: channelData.logo,
+          styling: streamData.stream ? 'OnlineStream row' : 'OfflineStream row',
         };
       });
       return { ...state, Streams, isReceived: true };
@@ -28,7 +29,7 @@ const StreamsReducer = (state = initialState, action) => {
       return { ...state, isReceived: false };
     case `${FETCH_ALL}_REJECTED`:
       const errorMessage = `Attention! ${action.payload}`;
-      return { ...state, isRejected: errorMessage };
+      return { ...state, isRejected: errorMessage, isReceived: true };
     default:
       return state;
   }

@@ -17,14 +17,22 @@ class StreamList extends Component {
 
   render() {
     const { streamList, isFetched, isError } = this.props;
-    streamList.map(stream => (
-      <Stream stream={stream} key={stream.name} />
-    ));
     return (
       <div>
         <TableHeader />
         <div>
-          {(isFetched === false) ? (<div className="loader" />) : <Stream /> }
+          {(isFetched === false) ? (<div className="loader" />) : (
+            <div>
+              {streamList.map(stream => (
+                <Stream
+                  key={stream.id}
+                  name={stream.name}
+                  status={stream.status}
+                  userpic={stream.userpic}
+                  game={stream.game}
+                  styling={stream.styling}
+                />))}
+            </div>) }
           {(isError) ? (<div className="error-message">{isError}</div>) : (<span />)}
         </div>
       </div>

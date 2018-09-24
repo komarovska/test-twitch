@@ -5,7 +5,7 @@ export const selectStreams = state => state.StreamsReducer.Streams;
 export const selectSortingType = state => state.StreamsReducer.sortingType;
 
 export const sortStreams = createSelector(
-  [selectStreams, selectSortingType],
+  [selectSortingType, selectStreams],
   (sortingType, Streams) => {
     switch (sortingType) {
       case ALL:

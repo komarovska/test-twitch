@@ -1,17 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import StreamList from '../StreamList/index.js';
+import StreamList from '../StreamList/index';
 
-export default class App extends Component {
-  render() {
-    return (
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12 col-lg-6 col-lg-offset-3">
-            <StreamList />
-          </div>
-        </div>
+const App = () => (
+  <div className="container">
+    <div className="row">
+      <div className="col-md-12 col-lg-6 col-lg-offset-3">
+        <StreamList />
       </div>
-    );
-  }
-}
+    </div>
+  </div>
+);
+
+export default App;
